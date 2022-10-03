@@ -1,8 +1,12 @@
+import os
+import sys
+
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
+import pickle
 
-fruits = pd.read_table('./dvc-demo/dvc-demo/data/raw_data/fruit_data_with_colors.txt')
+fruits = pd.read_table('./dvc-demo/dvc-demo/data/raw/fruit_data_with_colors.txt')
 fruits.head()
 
 # create a mapping from fruit label value to fruit name to make results easier to interpret
@@ -22,5 +26,11 @@ knn = KNeighborsClassifier(n_neighbors = 5)
 knn.fit(X_train, y_train)
 
 # Estimate the accuracy of the classifier on future data, using the test data
-knn.score(X_test, y_test)
+with open(os.path.join('./dvc-demo/dvc-demo/results.txt'), 'w') as f:   
+    sys.stdout = f
+    print(knn.score(X_test, y_test))
+
+pickle.dump(knn,open( "./dvc-demo/dvc-demo/model_artificats/model_knn.pickle",'wb') )
+
+
 

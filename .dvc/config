@@ -1,0 +1,7 @@
+[core]
+    remote = dvc_demo_remote
+['remote "dvc_demo_remote"']
+    url = s3://prod-kb-datascience/dvc-demo/dvc
+    verify = true
+    profile = data-science-prod
+    region = ap-south-1
