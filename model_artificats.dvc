@@ -1,0 +1,5 @@
+outs:
+- md5: 5c386abdf97db364a93cf0632e77ee66.dir
+  size: 3492
+  nfiles: 1
+  path: model_artificats
